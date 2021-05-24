@@ -36,7 +36,6 @@ class _RegisterState extends State<Register> {
                     key: _formKey,
                     child: Column(
                       children: [
-                        Image.asset("assets/images/Poster.jpg"),
                         SizedBox(
                           height: 24,
                         ),
@@ -181,7 +180,7 @@ class _RegisterState extends State<Register> {
                           icon: Icon(Icons.save),
                           label: Text("Register"),
                           style: ElevatedButton.styleFrom(
-                              primary: Colors.deepOrange[400], elevation: 0),
+                              primary: Colors.green[200], elevation: 0),
                         ),
                         SizedBox(
                           height: 24,
@@ -193,8 +192,7 @@ class _RegisterState extends State<Register> {
                           },
                           child: Text(
                             "Already Register? Login",
-                            style: TextStyle(
-                                color: Colors.deepOrange, fontSize: 16),
+                            style: TextStyle(color: Colors.green, fontSize: 16),
                           ),
                         )
                       ],

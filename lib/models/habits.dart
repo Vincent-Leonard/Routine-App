@@ -4,6 +4,7 @@ class Habits extends Equatable {
   final String habitId;
   final String habitName;
   final String habitType;
+  final String typeValue;
   final String defaultHabit;
   final String positiveHabit;
   final String addBy;
@@ -14,6 +15,7 @@ class Habits extends Equatable {
     this.habitId,
     this.habitName,
     this.habitType,
+    this.typeValue,
     this.defaultHabit,
     this.positiveHabit,
     this.addBy,
@@ -26,6 +28,7 @@ class Habits extends Equatable {
         habitId,
         habitName,
         habitType,
+        typeValue,
         defaultHabit,
         positiveHabit,
         addBy,

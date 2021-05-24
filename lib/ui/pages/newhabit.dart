@@ -11,20 +11,65 @@ class _NewHabitState extends State<NewHabit> {
   final _formKey = GlobalKey<FormState>();
   final ctrlName = TextEditingController();
   final ctrlType = TextEditingController();
+  final ctrlValue = TextEditingController();
+  String selectedValue;
+  String selectedType;
+  List<DropdownMenuItem<String>> listDropType = [];
+  List<DropdownMenuItem<String>> listDropValue = [];
+
+  void loadDataType() {
+    listDropType = [];
+    listDropType.add(new DropdownMenuItem(
+      child: new Text('Check'),
+      value: "Check",
+    ));
+    listDropType.add(new DropdownMenuItem(
+      child: new Text('Cumulative'),
+      value: "Cumulative",
+    ));
+  }
+
+  void loadDataValue() {
+    listDropValue = [];
+    listDropValue.add(new DropdownMenuItem(
+      child: new Text('None'),
+      value: "None",
+    ));
+    listDropValue.add(new DropdownMenuItem(
+      child: new Text('Hours'),
+      value: "Hours",
+    ));
+    listDropValue.add(new DropdownMenuItem(
+      child: new Text('Times'),
+      value: "Times",
+    ));
+    listDropValue.add(new DropdownMenuItem(
+      child: new Text('Reps'),
+      value: "Reps",
+    ));
+    listDropValue.add(new DropdownMenuItem(
+      child: new Text('Portion'),
+      value: "Portion",
+    ));
+  }
 
   void dispose() {
     ctrlName.dispose();
     ctrlType.dispose();
+    ctrlValue.dispose();
     super.dispose();
   }
 
   void clearForm() {
     ctrlName.clear();
     ctrlType.clear();
+    ctrlValue.clear();
   }
 
   @override
   Widget build(BuildContext context) {
+    loadDataType();
+    loadDataValue();
     return Scaffold(
       appBar: AppBar(
         title: Text("New Habit"),
@@ -65,21 +110,25 @@ class _NewHabitState extends State<NewHabit> {
                       SizedBox(
                         height: 24,
                       ),
-                      TextFormField(
-                        controller: ctrlType,
-                        keyboardType: TextInputType.text,
-                        decoration: InputDecoration(
-                          labelText: "Habit Type",
-                          prefixIcon: Icon(Icons.label),
-                          border: OutlineInputBorder(),
-                        ),
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return "Please fill the Field";
-                          } else {
-                            return null;
-                          }
+                      new DropdownButton(
+                        value: selectedType,
+                        items: listDropType,
+                        hint: new Text('Select Type'),
+                        onChanged: (value) {
+                          selectedType = value;
+                          setState(() {});
+                        },
+                      ),
+                      SizedBox(
+                        height: 24,
+                      ),
+                      new DropdownButton(
+                        value: selectedValue,
+                        items: listDropValue,
+                        hint: new Text('Select Value'),
+                        onChanged: (value) {
+                          selectedValue = value;
+                          setState(() {});
                         },
                       ),
                       SizedBox(
@@ -88,14 +137,16 @@ class _NewHabitState extends State<NewHabit> {
                       ElevatedButton.icon(
                         onPressed: () async {
                           Habits habits = Habits(
-                              "",
-                              ctrlName.text,
-                              ctrlType.text,
-                              "1",
-                              "0",
-                              FirebaseAuth.instance.currentUser.uid,
-                              "",
-                              "");
+                            "",
+                            ctrlName.text,
+                            selectedType,
+                            selectedValue,
+                            "0",
+                            "0",
+                            FirebaseAuth.instance.currentUser.uid,
+                            "",
+                            "",
+                          );
                           await HabitServices.addHabit(habits).then((value) {
                             if (value == true) {
                               ActivityServices.showToast(
