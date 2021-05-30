@@ -7,7 +7,6 @@ class Habits extends Equatable {
   final String typeValue;
   final String defaultHabit;
   final String positiveHabit;
-  final String addBy;
   final String createdAt;
   final String updatedAt;
 
@@ -18,7 +17,6 @@ class Habits extends Equatable {
     this.typeValue,
     this.defaultHabit,
     this.positiveHabit,
-    this.addBy,
     this.createdAt,
     this.updatedAt,
   );
@@ -31,7 +29,6 @@ class Habits extends Equatable {
         typeValue,
         defaultHabit,
         positiveHabit,
-        addBy,
         createdAt,
         updatedAt,
       ];

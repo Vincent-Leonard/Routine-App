@@ -72,7 +72,7 @@ class _NewHabitState extends State<NewHabit> {
     loadDataValue();
     return Scaffold(
       appBar: AppBar(
-        title: Text("New Habit"),
+        title: Text("New Habit", style: TextStyle(color: Colors.white)),
         centerTitle: true,
       ),
       body: Container(
@@ -143,7 +143,6 @@ class _NewHabitState extends State<NewHabit> {
                             selectedValue,
                             "0",
                             "0",
-                            FirebaseAuth.instance.currentUser.uid,
                             "",
                             "",
                           );

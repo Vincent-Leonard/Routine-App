@@ -52,7 +52,14 @@ class _HabitCardState extends State<HabitCard> {
                       ),
                       color: Colors.blue,
                       onPressed: () async {
-                        await HabitServices.addDefaultHabit(user, habit.habitId)
+                        await HabitServices.addDefaultHabit(
+                                user,
+                                habit.habitId,
+                                habit.habitName,
+                                habit.habitType,
+                                habit.typeValue,
+                                habit.defaultHabit,
+                                habit.positiveHabit)
                             .then((value) {
                           if (value == true) {
                             ActivityServices.showToast(

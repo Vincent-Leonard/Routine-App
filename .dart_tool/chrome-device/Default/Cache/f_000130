@@ -1,0 +1,381 @@
+define(['dart_sdk'], (function load__packages__email_validator__email_validator_dart(dart_sdk) {
+  'use strict';
+  const core = dart_sdk.core;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  var email_validator = Object.create(dart.library);
+  var $codeUnitAt = dartx.codeUnitAt;
+  var $contains = dartx.contains;
+  var $_get = dartx._get;
+  var $isEmpty = dartx.isEmpty;
+  var $substring = dartx.substring;
+  var $toLowerCase = dartx.toLowerCase;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    typeL: () => (T.typeL = dart.constFn(dart.legacy(email_validator.type)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: email_validator.type.prototype,
+        [_name$]: "type.None",
+        index: 0
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: email_validator.type.prototype,
+        [_name$]: "type.Alphabetic",
+        index: 1
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: email_validator.type.prototype,
+        [_name$]: "type.Numeric",
+        index: 2
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: email_validator.type.prototype,
+        [_name$]: "type.AlphaNumeric",
+        index: 3
+      });
+    },
+    get C4() {
+      return C[4] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2, C[3] || CT.C3], T.typeL());
+    }
+  }, false);
+  var C = Array(5).fill(void 0);
+  var I = [
+    "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/email_validator-2.0.1/lib/email_validator.dart",
+    "package:email_validator/email_validator.dart"
+  ];
+  var _name$ = dart.privateName(email_validator, "_name");
+  email_validator.type = class type extends core.Object {
+    toString() {
+      return this[_name$];
+    }
+  };
+  (email_validator.type.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[0], 5, 6, "index");
+    if (_name == null) dart.nullFailed(I[0], 5, 6, "_name");
+    this.index = index;
+    this[_name$] = _name;
+    ;
+  }).prototype = email_validator.type.prototype;
+  dart.addTypeTests(email_validator.type);
+  dart.addTypeCaches(email_validator.type);
+  dart.setLibraryUri(email_validator.type, I[1]);
+  dart.setFieldSignature(email_validator.type, () => ({
+    __proto__: dart.getFields(email_validator.type.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(email_validator.type, ['toString']);
+  email_validator.type.None = C[0] || CT.C0;
+  email_validator.type.Alphabetic = C[1] || CT.C1;
+  email_validator.type.Numeric = C[2] || CT.C2;
+  email_validator.type.AlphaNumeric = C[3] || CT.C3;
+  email_validator.type.values = C[4] || CT.C4;
+  email_validator.EmailValidator = class EmailValidator extends core.Object {
+    static _isDigit(c) {
+      if (c == null) dart.nullFailed(I[0], 12, 31, "c");
+      return c[$codeUnitAt](0) >= 48 && c[$codeUnitAt](0) <= 57;
+    }
+    static _isLetter(c) {
+      if (c == null) dart.nullFailed(I[0], 16, 32, "c");
+      return c[$codeUnitAt](0) >= 65 && c[$codeUnitAt](0) <= 90 || c[$codeUnitAt](0) >= 97 && c[$codeUnitAt](0) <= 122;
+    }
+    static _isLetterOrDigit(c) {
+      if (c == null) dart.nullFailed(I[0], 21, 39, "c");
+      return dart.test(email_validator.EmailValidator._isLetter(c)) || dart.test(email_validator.EmailValidator._isDigit(c));
+    }
+    static _isAtom(c, allowInternational) {
+      if (c == null) dart.nullFailed(I[0], 25, 30, "c");
+      if (allowInternational == null) dart.nullFailed(I[0], 25, 38, "allowInternational");
+      return c[$codeUnitAt](0) < 128 ? dart.test(email_validator.EmailValidator._isLetterOrDigit(c)) || "!#$%&'*+-/=?^_`{|}~"[$contains](c) : allowInternational;
+    }
+    static _isDomain(c, allowInternational) {
+      if (c == null) dart.nullFailed(I[0], 31, 32, "c");
+      if (allowInternational == null) dart.nullFailed(I[0], 31, 40, "allowInternational");
+      if (c[$codeUnitAt](0) < 128) {
+        if (dart.test(email_validator.EmailValidator._isLetter(c)) || c === "-") {
+          email_validator.EmailValidator._domainType = email_validator.type.Alphabetic;
+          return true;
+        }
+        if (dart.test(email_validator.EmailValidator._isDigit(c))) {
+          email_validator.EmailValidator._domainType = email_validator.type.Numeric;
+          return true;
+        }
+        return false;
+      }
+      if (dart.test(allowInternational)) {
+        email_validator.EmailValidator._domainType = email_validator.type.Alphabetic;
+        return true;
+      }
+      return false;
+    }
+    static _isDomainStart(c, allowInternational) {
+      if (c == null) dart.nullFailed(I[0], 54, 37, "c");
+      if (allowInternational == null) dart.nullFailed(I[0], 54, 45, "allowInternational");
+      if (c[$codeUnitAt](0) < 128) {
+        if (dart.test(email_validator.EmailValidator._isLetter(c))) {
+          email_validator.EmailValidator._domainType = email_validator.type.Alphabetic;
+          return true;
+        }
+        if (dart.test(email_validator.EmailValidator._isDigit(c))) {
+          email_validator.EmailValidator._domainType = email_validator.type.Numeric;
+          return true;
+        }
+        email_validator.EmailValidator._domainType = email_validator.type.None;
+        return false;
+      }
+      if (dart.test(allowInternational)) {
+        email_validator.EmailValidator._domainType = email_validator.type.Alphabetic;
+        return true;
+      }
+      email_validator.EmailValidator._domainType = email_validator.type.None;
+      return false;
+    }
+    static _skipAtom(text, allowInternational) {
+      if (text == null) dart.nullFailed(I[0], 81, 32, "text");
+      if (allowInternational == null) dart.nullFailed(I[0], 81, 43, "allowInternational");
+      let startIndex = email_validator.EmailValidator._index;
+      while (dart.notNull(email_validator.EmailValidator._index) < text.length && dart.test(email_validator.EmailValidator._isAtom(text[$_get](email_validator.EmailValidator._index), allowInternational))) {
+        email_validator.EmailValidator._index = dart.notNull(email_validator.EmailValidator._index) + 1;
+      }
+      return dart.notNull(email_validator.EmailValidator._index) > dart.notNull(startIndex);
+    }
+    static _skipSubDomain(text, allowInternational) {
+      if (text == null) dart.nullFailed(I[0], 91, 37, "text");
+      if (allowInternational == null) dart.nullFailed(I[0], 91, 48, "allowInternational");
+      let startIndex = email_validator.EmailValidator._index;
+      if (!dart.test(email_validator.EmailValidator._isDomainStart(text[$_get](email_validator.EmailValidator._index), allowInternational))) {
+        return false;
+      }
+      email_validator.EmailValidator._index = dart.notNull(email_validator.EmailValidator._index) + 1;
+      while (dart.notNull(email_validator.EmailValidator._index) < text.length && dart.test(email_validator.EmailValidator._isDomain(text[$_get](email_validator.EmailValidator._index), allowInternational))) {
+        email_validator.EmailValidator._index = dart.notNull(email_validator.EmailValidator._index) + 1;
+      }
+      return dart.notNull(email_validator.EmailValidator._index) - dart.notNull(startIndex) < 64 && text[$_get](dart.notNull(email_validator.EmailValidator._index) - 1) !== "-";
+    }
+    static _skipDomain(text, allowTopLevelDomains, allowInternational) {
+      if (text == null) dart.nullFailed(I[0], 109, 14, "text");
+      if (allowTopLevelDomains == null) dart.nullFailed(I[0], 109, 25, "allowTopLevelDomains");
+      if (allowInternational == null) dart.nullFailed(I[0], 109, 52, "allowInternational");
+      if (!dart.test(email_validator.EmailValidator._skipSubDomain(text, allowInternational))) {
+        return false;
+      }
+      if (dart.notNull(email_validator.EmailValidator._index) < text.length && text[$_get](email_validator.EmailValidator._index) === ".") {
+        do {
+          email_validator.EmailValidator._index = dart.notNull(email_validator.EmailValidator._index) + 1;
+          if (email_validator.EmailValidator._index === text.length) {
+            return false;
+          }
+          if (!dart.test(email_validator.EmailValidator._skipSubDomain(text, allowInternational))) {
+            return false;
+          }
+        } while (dart.notNull(email_validator.EmailValidator._index) < text.length && text[$_get](email_validator.EmailValidator._index) === ".");
+      } else if (!dart.test(allowTopLevelDomains)) {
+        return false;
+      }
+      if (email_validator.EmailValidator._domainType == email_validator.type.Numeric) {
+        return false;
+      }
+      return true;
+    }
+    static _skipQuoted(text, allowInternational) {
+      if (text == null) dart.nullFailed(I[0], 139, 34, "text");
+      if (allowInternational == null) dart.nullFailed(I[0], 139, 45, "allowInternational");
+      let escaped = false;
+      email_validator.EmailValidator._index = dart.notNull(email_validator.EmailValidator._index) + 1;
+      while (dart.notNull(email_validator.EmailValidator._index) < text.length) {
+        if (text[$_get](email_validator.EmailValidator._index)[$codeUnitAt](0) >= 128 && !dart.test(allowInternational)) {
+          return false;
+        }
+        if (text[$_get](email_validator.EmailValidator._index) === "\\") {
+          escaped = !escaped;
+        } else if (!escaped) {
+          if (text[$_get](email_validator.EmailValidator._index) === "\"") {
+            break;
+          }
+        } else {
+          escaped = false;
+        }
+        email_validator.EmailValidator._index = dart.notNull(email_validator.EmailValidator._index) + 1;
+      }
+      if (dart.notNull(email_validator.EmailValidator._index) >= text.length || text[$_get](email_validator.EmailValidator._index) !== "\"") {
+        return false;
+      }
+      email_validator.EmailValidator._index = dart.notNull(email_validator.EmailValidator._index) + 1;
+      return true;
+    }
+    static _skipIPv4Literal(text) {
+      if (text == null) dart.nullFailed(I[0], 172, 39, "text");
+      let groups = 0;
+      while (dart.notNull(email_validator.EmailValidator._index) < text.length && groups < 4) {
+        let startIndex = email_validator.EmailValidator._index;
+        let value = 0;
+        while (dart.notNull(email_validator.EmailValidator._index) < text.length && text[$_get](email_validator.EmailValidator._index)[$codeUnitAt](0) >= 48 && text[$_get](email_validator.EmailValidator._index)[$codeUnitAt](0) <= 57) {
+          value = value * 10 + (text[$_get](email_validator.EmailValidator._index)[$codeUnitAt](0) - 48);
+          email_validator.EmailValidator._index = dart.notNull(email_validator.EmailValidator._index) + 1;
+        }
+        if (email_validator.EmailValidator._index == startIndex || dart.notNull(email_validator.EmailValidator._index) - dart.notNull(startIndex) > 3 || value > 255) {
+          return false;
+        }
+        groups = groups + 1;
+        if (groups < 4 && dart.notNull(email_validator.EmailValidator._index) < text.length && text[$_get](email_validator.EmailValidator._index) === ".") {
+          email_validator.EmailValidator._index = dart.notNull(email_validator.EmailValidator._index) + 1;
+        }
+      }
+      return groups === 4;
+    }
+    static _isHexDigit(str) {
+      if (str == null) dart.nullFailed(I[0], 200, 34, "str");
+      let c = str[$codeUnitAt](0);
+      return c >= 65 && c <= 70 || c >= 97 && c <= 102 || c >= 48 && c <= 57;
+    }
+    static _skipIPv6Literal(text) {
+      if (text == null) dart.nullFailed(I[0], 222, 39, "text");
+      let compact = false;
+      let colons = 0;
+      while (dart.notNull(email_validator.EmailValidator._index) < text.length) {
+        let startIndex = email_validator.EmailValidator._index;
+        while (dart.notNull(email_validator.EmailValidator._index) < text.length && dart.test(email_validator.EmailValidator._isHexDigit(text[$_get](email_validator.EmailValidator._index)))) {
+          email_validator.EmailValidator._index = dart.notNull(email_validator.EmailValidator._index) + 1;
+        }
+        if (dart.notNull(email_validator.EmailValidator._index) >= text.length) {
+          break;
+        }
+        if (dart.notNull(email_validator.EmailValidator._index) > dart.notNull(startIndex) && colons > 2 && text[$_get](email_validator.EmailValidator._index) === ".") {
+          email_validator.EmailValidator._index = startIndex;
+          if (!dart.test(email_validator.EmailValidator._skipIPv4Literal(text))) {
+            return false;
+          }
+          return compact ? colons < 6 : colons === 6;
+        }
+        let count = dart.notNull(email_validator.EmailValidator._index) - dart.notNull(startIndex);
+        if (count > 4) {
+          return false;
+        }
+        if (text[$_get](email_validator.EmailValidator._index) !== ":") {
+          break;
+        }
+        startIndex = email_validator.EmailValidator._index;
+        while (dart.notNull(email_validator.EmailValidator._index) < text.length && text[$_get](email_validator.EmailValidator._index) === ":") {
+          email_validator.EmailValidator._index = dart.notNull(email_validator.EmailValidator._index) + 1;
+        }
+        count = dart.notNull(email_validator.EmailValidator._index) - dart.notNull(startIndex);
+        if (count > 2) {
+          return false;
+        }
+        if (count === 2) {
+          if (compact) {
+            return false;
+          }
+          compact = true;
+          colons = colons + 2;
+        } else {
+          colons = colons + 1;
+        }
+      }
+      if (colons < 2) {
+        return false;
+      }
+      return compact ? colons < 7 : colons === 7;
+    }
+    static validate(email, allowTopLevelDomains = false, allowInternational = true) {
+      let t0, t0$;
+      if (email == null) dart.nullFailed(I[0], 294, 31, "email");
+      if (allowTopLevelDomains == null) dart.nullFailed(I[0], 295, 13, "allowTopLevelDomains");
+      if (allowInternational == null) dart.nullFailed(I[0], 295, 48, "allowInternational");
+      email_validator.EmailValidator._index = 0;
+      if (email[$isEmpty] || email.length >= 255) {
+        return false;
+      }
+      if (email[$_get](email_validator.EmailValidator._index) === "\"") {
+        if (!dart.test(email_validator.EmailValidator._skipQuoted(email, allowInternational)) || dart.notNull(email_validator.EmailValidator._index) >= email.length) {
+          return false;
+        }
+      } else {
+        if (!dart.test(email_validator.EmailValidator._skipAtom(email, allowInternational)) || dart.notNull(email_validator.EmailValidator._index) >= email.length) {
+          return false;
+        }
+        while (email[$_get](email_validator.EmailValidator._index) === ".") {
+          email_validator.EmailValidator._index = dart.notNull(email_validator.EmailValidator._index) + 1;
+          if (dart.notNull(email_validator.EmailValidator._index) >= email.length) {
+            return false;
+          }
+          if (!dart.test(email_validator.EmailValidator._skipAtom(email, allowInternational))) {
+            return false;
+          }
+          if (dart.notNull(email_validator.EmailValidator._index) >= email.length) {
+            return false;
+          }
+        }
+      }
+      if (dart.notNull(email_validator.EmailValidator._index) + 1 >= email.length || dart.notNull(email_validator.EmailValidator._index) > 64 || email[$_get]((t0 = email_validator.EmailValidator._index, email_validator.EmailValidator._index = dart.notNull(t0) + 1, t0)) !== "@") {
+        return false;
+      }
+      if (email[$_get](email_validator.EmailValidator._index) !== "[") {
+        if (!dart.test(email_validator.EmailValidator._skipDomain(email, allowTopLevelDomains, allowInternational))) {
+          return false;
+        }
+        return email_validator.EmailValidator._index === email.length;
+      }
+      email_validator.EmailValidator._index = dart.notNull(email_validator.EmailValidator._index) + 1;
+      if (dart.notNull(email_validator.EmailValidator._index) + 8 >= email.length) {
+        return false;
+      }
+      let ipv6 = email[$substring](dart.notNull(email_validator.EmailValidator._index) - 1)[$toLowerCase]();
+      if (ipv6[$contains]("ipv6:")) {
+        email_validator.EmailValidator._index = dart.notNull(email_validator.EmailValidator._index) + "IPv6:".length;
+        if (!dart.test(email_validator.EmailValidator._skipIPv6Literal(email))) {
+          return false;
+        }
+      } else {
+        if (!dart.test(email_validator.EmailValidator._skipIPv4Literal(email))) {
+          return false;
+        }
+      }
+      if (dart.notNull(email_validator.EmailValidator._index) >= email.length || email[$_get]((t0$ = email_validator.EmailValidator._index, email_validator.EmailValidator._index = dart.notNull(t0$) + 1, t0$)) !== "]") {
+        return false;
+      }
+      return email_validator.EmailValidator._index === email.length;
+    }
+  };
+  (email_validator.EmailValidator.new = function() {
+    ;
+  }).prototype = email_validator.EmailValidator.prototype;
+  dart.addTypeTests(email_validator.EmailValidator);
+  dart.addTypeCaches(email_validator.EmailValidator);
+  dart.setLibraryUri(email_validator.EmailValidator, I[1]);
+  dart.defineLazy(email_validator.EmailValidator, {
+    /*email_validator.EmailValidator._index*/get _index() {
+      return 0;
+    },
+    set _index(_) {},
+    /*email_validator.EmailValidator._atomCharacters*/get _atomCharacters() {
+      return "!#$%&'*+-/=?^_`{|}~";
+    },
+    /*email_validator.EmailValidator._domainType*/get _domainType() {
+      return email_validator.type.None;
+    },
+    set _domainType(_) {}
+  }, false);
+  dart.trackLibraries("packages/email_validator/email_validator.dart", {
+    "package:email_validator/email_validator.dart": email_validator
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["email_validator.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/email_validator/email_validator.dart.lib.js"}');
+  // Exports:
+  return {
+    email_validator: email_validator
+  };
+}));
+
+//# sourceMappingURL=email_validator.dart.lib.js.map

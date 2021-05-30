@@ -1,0 +1,315 @@
+define(['dart_sdk', 'packages/firebase_core/firebase_core.dart', 'packages/firebase_messaging/firebase_messaging.dart', 'packages/firebase_auth/firebase_auth.dart', 'packages/cloud_firestore/cloud_firestore.dart', 'packages/intl/src/intl/date_format.dart', 'packages/fluttertoast/fluttertoast.dart', 'packages/flutter/src/material/colors.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/painting/alignment.dart', 'packages/flutter_spinkit/src/spinning_circle.dart'], (function load__packages__routine__services__services_dart(dart_sdk, packages__firebase_core__firebase_core$46dart, packages__firebase_messaging__firebase_messaging$46dart, packages__firebase_auth__firebase_auth$46dart, packages__cloud_firestore__cloud_firestore$46dart, packages__intl__src__intl__date_format$46dart, packages__fluttertoast__fluttertoast$46dart, packages__flutter__src__material__colors$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__painting__alignment$46dart, packages__flutter_spinkit__src__spinning_circle$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _js_helper = dart_sdk._js_helper;
+  const async = dart_sdk.async;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const firebase_core = packages__firebase_core__firebase_core$46dart.firebase_core;
+  const firebase_messaging = packages__firebase_messaging__firebase_messaging$46dart.firebase_messaging;
+  const firebase_auth = packages__firebase_auth__firebase_auth$46dart.firebase_auth;
+  const cloud_firestore = packages__cloud_firestore__cloud_firestore$46dart.cloud_firestore;
+  const date_format = packages__intl__src__intl__date_format$46dart.src__intl__date_format;
+  const fluttertoast = packages__fluttertoast__fluttertoast$46dart.fluttertoast;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
+  const spinning_circle = packages__flutter_spinkit__src__spinning_circle$46dart.src__spinning_circle;
+  var services = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    StringL: () => (T.StringL = dart.constFn(dart.legacy(core.String)))(),
+    IdentityMapOfStringL$dynamic: () => (T.IdentityMapOfStringL$dynamic = dart.constFn(_js_helper.IdentityMap$(T.StringL(), dart.dynamic)))(),
+    voidToNull: () => (T.voidToNull = dart.constFn(dart.fnType(core.Null, [dart.void])))(),
+    dynamicToNull: () => (T.dynamicToNull = dart.constFn(dart.fnType(core.Null, [dart.dynamic])))(),
+    VoidToNull: () => (T.VoidToNull = dart.constFn(dart.fnType(core.Null, [])))(),
+    boolL: () => (T.boolL = dart.constFn(dart.legacy(core.bool)))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "size",
+        [_Location_column]: 9,
+        [_Location_line]: 28,
+        [_Location_file]: null
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 9,
+        [_Location_line]: 29,
+        [_Location_file]: null
+      });
+    },
+    get C1() {
+      return C[1] = dart.constList([C[2] || CT.C2, C[3] || CT.C3], T._LocationL());
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 27,
+        [_Location_file]: "file:///C:/Users/Vincent%20Leonard/FlutterProjects/routine/lib/services/activity_services.dart"
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "alignment",
+        [_Location_column]: 7,
+        [_Location_line]: 23,
+        [_Location_file]: null
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 7,
+        [_Location_line]: 24,
+        [_Location_file]: null
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 7,
+        [_Location_line]: 25,
+        [_Location_file]: null
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 7,
+        [_Location_line]: 26,
+        [_Location_file]: null
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 27,
+        [_Location_file]: null
+      });
+    },
+    get C5() {
+      return C[5] = dart.constList([C[6] || CT.C6, C[7] || CT.C7, C[8] || CT.C8, C[9] || CT.C9, C[10] || CT.C10], T._LocationL());
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[5] || CT.C5,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 22,
+        [_Location_file]: "file:///C:/Users/Vincent%20Leonard/FlutterProjects/routine/lib/services/activity_services.dart"
+      });
+    }
+  }, false);
+  var C = Array(11).fill(void 0);
+  var I = ["package:routine/services/services.dart"];
+  services.AuthServices = class AuthServices extends core.Object {
+    static signUp(users) {
+      return async.async(T.StringL(), function* signUp() {
+        yield firebase_core.Firebase.initializeApp();
+        let dateNow = services.ActivityServices.dateNow();
+        let msg = "";
+        let token = "";
+        let uid = "";
+        let userCredential = (yield services.AuthServices.auth.createUserWithEmailAndPassword({email: users.email, password: users.password}));
+        uid = userCredential.user.uid;
+        token = (yield firebase_messaging.FirebaseMessaging.instance.getToken());
+        yield services.AuthServices.userCollection.doc(uid).set(new (T.IdentityMapOfStringL$dynamic()).from(["uid", uid, "name", users.name, "phone", users.phone, "email", users.email, "password", users.password, "token", token, "isOn", "0", "createdAt", users.createdAt, "updatedAt", users.updatedAt])).then(core.Null, dart.fn(value => {
+          msg = "success";
+        }, T.voidToNull())).catchError(dart.fn(onError => {
+          msg = T.StringL().as(onError);
+        }, T.dynamicToNull()));
+        services.AuthServices.auth.signOut();
+        return msg;
+      });
+    }
+    static signIn(email, password) {
+      return async.async(T.StringL(), function* signIn() {
+        yield firebase_core.Firebase.initializeApp();
+        let dateNow = services.ActivityServices.dateNow();
+        let msg = "";
+        let token = "";
+        let uid = "";
+        let userCredential = (yield services.AuthServices.auth.signInWithEmailAndPassword({email: email, password: password}));
+        uid = userCredential.user.uid;
+        token = (yield firebase_messaging.FirebaseMessaging.instance.getToken());
+        yield services.AuthServices.userCollection.doc(uid).update(new (T.IdentityMapOfStringL$dynamic()).from(["isOn", 1, "token", token, "updatedAt", dateNow])).then(core.Null, dart.fn(value => {
+          msg = "success";
+        }, T.voidToNull())).catchError(dart.fn(onError => {
+          msg = T.StringL().as(onError);
+        }, T.dynamicToNull()));
+        return msg;
+      });
+    }
+    static signOut() {
+      return async.async(T.boolL(), function* signOut() {
+        yield firebase_core.Firebase.initializeApp();
+        let dateNow = services.ActivityServices.dateNow();
+        let uid = services.AuthServices.auth.currentUser.uid;
+        yield services.AuthServices.auth.signOut().whenComplete(dart.fn(() => {
+          services.AuthServices.userCollection.doc(uid).update(new (T.IdentityMapOfStringL$dynamic()).from(["isOn", "0", "token", "-", "updatedAt", dateNow]));
+        }, T.VoidToNull()));
+        return true;
+      });
+    }
+  };
+  (services.AuthServices.new = function() {
+    ;
+  }).prototype = services.AuthServices.prototype;
+  dart.addTypeTests(services.AuthServices);
+  dart.addTypeCaches(services.AuthServices);
+  dart.setLibraryUri(services.AuthServices, I[0]);
+  dart.defineLazy(services.AuthServices, {
+    /*services.AuthServices.auth*/get auth() {
+      return firebase_auth.FirebaseAuth.instance;
+    },
+    set auth(_) {},
+    /*services.AuthServices.userCollection*/get userCollection() {
+      return cloud_firestore.FirebaseFirestore.instance.collection("users");
+    },
+    set userCollection(_) {},
+    /*services.AuthServices.userDoc*/get userDoc() {
+      return null;
+    },
+    set userDoc(_) {}
+  }, true);
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  services.ActivityServices = class ActivityServices extends core.Object {
+    static dateNow() {
+      let now = new core.DateTime.now();
+      let formatter = new date_format.DateFormat.new("yyyy-mm-dd hh:mm:ss");
+      let hasil = formatter.format(now);
+      return hasil;
+    }
+    static showToast(msg, myColor) {
+      fluttertoast.Fluttertoast.showToast({msg: msg, toastLength: fluttertoast.Toast.LENGTH_SHORT, gravity: fluttertoast.ToastGravity.BOTTOM, backgroundColor: myColor, textColor: colors.Colors.white, fontSize: 14.0});
+    }
+    static loadings() {
+      return new container.Container.new({alignment: alignment.Alignment.center, width: 1 / 0, height: 1 / 0, color: colors.Colors.black26, child: new spinning_circle.SpinKitSpinningCircle.new({size: 50.0, color: colors.Colors.green._get(200), $creationLocationd_0dea112b090073317d4: C[0] || CT.C0}), $creationLocationd_0dea112b090073317d4: C[4] || CT.C4});
+    }
+  };
+  (services.ActivityServices.new = function() {
+    ;
+  }).prototype = services.ActivityServices.prototype;
+  dart.addTypeTests(services.ActivityServices);
+  dart.addTypeCaches(services.ActivityServices);
+  dart.setLibraryUri(services.ActivityServices, I[0]);
+  services.HabitServices = class HabitServices extends core.Object {
+    static addHabit(habits) {
+      return async.async(T.boolL(), function* addHabit() {
+        yield firebase_core.Firebase.initializeApp();
+        let dateNow = services.ActivityServices.dateNow();
+        services.HabitServices.habitDocument = (yield services.HabitServices.habitCollection.add(new (T.IdentityMapOfStringL$dynamic()).from(["habitId", habits.habitId, "habitName", habits.habitName, "habitType", habits.habitType, "typeValue", habits.typeValue, "defaultHabit", habits.defaultHabit, "positiveHabit", habits.positiveHabit, "addBy", habits.addBy, "createdAt", dateNow, "updatedAt", dateNow])));
+        if (services.HabitServices.habitDocument != null) {
+          services.HabitServices.habitCollection.doc(services.HabitServices.habitDocument.id).update(new (T.IdentityMapOfStringL$dynamic()).from(["habitId", services.HabitServices.habitDocument.id]));
+          return true;
+        } else {
+          return false;
+        }
+      });
+    }
+    static deleteHabit(id) {
+      return async.async(T.boolL(), function* deleteHabit() {
+        let hsl = true;
+        yield firebase_core.Firebase.initializeApp();
+        yield services.HabitServices.habitCollection.doc(id).delete().then(core.Null, dart.fn(value => {
+          hsl = true;
+        }, T.voidToNull())).catchError(dart.fn(onError => {
+          hsl = false;
+        }, T.dynamicToNull()));
+        return hsl;
+      });
+    }
+    static addDefaultHabit(uid, habitId) {
+      return async.async(T.boolL(), function* addDefaultHabit() {
+        yield firebase_core.Firebase.initializeApp();
+        let dateNow = services.ActivityServices.dateNow();
+        services.HabitServices.userCollection = cloud_firestore.FirebaseFirestore.instance.collection("habits").doc(habitId).collection("users");
+        yield services.HabitServices.userCollection.doc(uid).set(new (T.IdentityMapOfStringL$dynamic()).from(["user", uid, "createdAt", dateNow, "updatedAt", dateNow]));
+        return true;
+      });
+    }
+  };
+  (services.HabitServices.new = function() {
+    ;
+  }).prototype = services.HabitServices.prototype;
+  dart.addTypeTests(services.HabitServices);
+  dart.addTypeCaches(services.HabitServices);
+  dart.setLibraryUri(services.HabitServices, I[0]);
+  dart.defineLazy(services.HabitServices, {
+    /*services.HabitServices.auth*/get auth() {
+      return firebase_auth.FirebaseAuth.instance;
+    },
+    set auth(_) {},
+    /*services.HabitServices.habitCollection*/get habitCollection() {
+      return cloud_firestore.FirebaseFirestore.instance.collection("habits");
+    },
+    set habitCollection(_) {},
+    /*services.HabitServices.habitDocument*/get habitDocument() {
+      return null;
+    },
+    set habitDocument(_) {},
+    /*services.HabitServices.timeCollection*/get timeCollection() {
+      return cloud_firestore.FirebaseFirestore.instance.collection("habits").doc(services.HabitServices.habitDocument.id).collection("date");
+    },
+    set timeCollection(_) {},
+    /*services.HabitServices.userCollection*/get userCollection() {
+      return cloud_firestore.FirebaseFirestore.instance.collection("habits").doc(services.HabitServices.habitDocument.id).collection("users");
+    },
+    set userCollection(_) {},
+    /*services.HabitServices.ref*/get ref() {
+      return null;
+    },
+    set ref(_) {},
+    /*services.HabitServices.uploadTask*/get uploadTask() {
+      return null;
+    },
+    set uploadTask(_) {},
+    /*services.HabitServices.imgUrl*/get imgUrl() {
+      return null;
+    },
+    set imgUrl(_) {}
+  }, true);
+  dart.trackLibraries("packages/routine/services/services.dart", {
+    "package:routine/services/services.dart": services
+  }, {
+    "package:routine/services/services.dart": ["auth_services.dart", "activity_services.dart", "habit_services.dart"]
+  }, '{"version":3,"sourceRoot":"","sources":["auth_services.dart","activity_services.dart","habit_services.dart"],"names":[],"mappings":"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","file":"../../../../../../packages/routine/services/services.dart.lib.js"}');
+  // Exports:
+  return {
+    services__services: services
+  };
+}));
+
+//# sourceMappingURL=services.dart.lib.js.map

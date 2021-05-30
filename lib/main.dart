@@ -16,7 +16,8 @@ class MyApp extends StatelessWidget {
       theme: MyTheme.lightTheme(),
       initialRoute: '/',
       routes: {
-        '/': (context) => Login(),
+        '/': (context) => Splash(),
+        Splash.routeName: (context) => Splash(),
         Menu.routeName: (context) => Menu(),
         Login.routeName: (context) => Login(),
         Register.routeName: (context) => Register(),

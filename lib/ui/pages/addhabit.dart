@@ -9,7 +9,7 @@ class AddHabit extends StatefulWidget {
 class _AddHabitState extends State<AddHabit> {
   String uid = FirebaseAuth.instance.currentUser.uid;
   CollectionReference habitCollection =
-      FirebaseFirestore.instance.collection("habits");
+      FirebaseFirestore.instance.collection("defaultHabits");
 
   Widget buildBody() {
     return Container(
@@ -36,7 +36,6 @@ class _AddHabitState extends State<AddHabit> {
                   doc.data()['typeValue'],
                   doc.data()['defaultHabit'],
                   doc.data()['positiveHabit'],
-                  doc.data()['addBy'],
                   doc.data()['habitcreatedAt'],
                   doc.data()['habitupdatedAt'],
                 );
@@ -51,7 +50,7 @@ class _AddHabitState extends State<AddHabit> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add Habit"),
+        title: Text("Add Habit", style: TextStyle(color: Colors.white)),
         centerTitle: true,
       ),
       body: Container(

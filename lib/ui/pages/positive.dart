@@ -7,52 +7,25 @@ class Positive extends StatefulWidget {
 
 class _PositiveState extends State<Positive> {
   String uid = FirebaseAuth.instance.currentUser.uid;
+  static DocumentReference habitDocument;
   CollectionReference habitCollection =
-      FirebaseFirestore.instance.collection("habits");
+      FirebaseFirestore.instance.collection("users");
+  // CollectionReference defaultCollection = FirebaseFirestore.instance
+  //     .collection("habits")
+  //     .doc(habitDocument.id)
+  //     .collection("users");
   CollectionReference defaulthabitCollection;
-
-  Widget buildBody2() {
-    return Container(
-        width: double.infinity,
-        height: double.infinity,
-        child: StreamBuilder<QuerySnapshot>(
-          stream:
-              habitCollection.where('defaultHabit', isEqualTo: 1).snapshots(),
-          builder:
-              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-            if (snapshot.hasError) {
-              return Text("Failed to load data!");
-            }
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return ActivityServices.loadings();
-            }
-
-            return new ListView(
-              children: snapshot.data.docs.map((DocumentSnapshot doc) {
-                Habits habits = new Habits(
-                  doc.data()['habitId'],
-                  doc.data()['habitName'],
-                  doc.data()['habitType'],
-                  doc.data()['typeValue'],
-                  doc.data()['defaultHabit'],
-                  doc.data()['positiveHabit'],
-                  doc.data()['addBy'],
-                  doc.data()['habitcreatedAt'],
-                  doc.data()['habitupdatedAt'],
-                );
-                return PositiveCard(habits: habits);
-              }).toList(),
-            );
-          },
-        ));
-  }
 
   Widget buildBody() {
     return Container(
         width: double.infinity,
         height: double.infinity,
         child: StreamBuilder<QuerySnapshot>(
-          stream: habitCollection.where('addBy', isEqualTo: uid).snapshots(),
+          stream: habitCollection
+              .doc(uid)
+              .collection("habits")
+              .where('positiveHabit', isEqualTo: "0")
+              .snapshots(),
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (snapshot.hasError) {
@@ -71,7 +44,6 @@ class _PositiveState extends State<Positive> {
                   doc.data()['typeValue'],
                   doc.data()['defaultHabit'],
                   doc.data()['positiveHabit'],
-                  doc.data()['addBy'],
                   doc.data()['habitcreatedAt'],
                   doc.data()['habitupdatedAt'],
                 );
@@ -86,7 +58,7 @@ class _PositiveState extends State<Positive> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Positive Habit"),
+          title: Text("Positive Habit", style: TextStyle(color: Colors.white)),
           centerTitle: true,
         ),
         body: Container(
