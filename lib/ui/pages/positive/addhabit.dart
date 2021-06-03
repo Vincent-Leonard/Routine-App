@@ -1,4 +1,4 @@
-part of 'pages.dart';
+part of '../pages.dart';
 
 class AddHabit extends StatefulWidget {
   static const String routeName = "AddHabit";
@@ -16,8 +16,10 @@ class _AddHabitState extends State<AddHabit> {
         width: double.infinity,
         height: double.infinity,
         child: StreamBuilder<QuerySnapshot>(
-          stream:
-              habitCollection.where('defaultHabit', isEqualTo: "1").snapshots(),
+          stream: habitCollection
+              .where('positiveHabit', isEqualTo: "0")
+              .where("defaultHabit", isEqualTo: "1")
+              .snapshots(),
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (snapshot.hasError) {
@@ -52,6 +54,13 @@ class _AddHabitState extends State<AddHabit> {
       appBar: AppBar(
         title: Text("Add Habit", style: TextStyle(color: Colors.white)),
         centerTitle: true,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
       ),
       body: Container(
         width: double.infinity,

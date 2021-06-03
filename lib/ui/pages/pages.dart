@@ -19,6 +19,6 @@ part 'positive.dart';
 part 'negative.dart';
 part 'history.dart';
 part 'profile.dart';
-part 'addhabit.dart';
-part 'newhabit.dart';
+part 'positive/addhabit.dart';
+part 'positive/newhabit.dart';
 part 'splash.dart';

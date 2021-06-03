@@ -1,4 +1,4 @@
-part of 'pages.dart';
+part of '../pages.dart';
 
 class NewHabit extends StatefulWidget {
   static const String routeName = "NewHabit";
@@ -53,6 +53,22 @@ class _NewHabitState extends State<NewHabit> {
     ));
   }
 
+  void loadNoneValue() {
+    listDropValue = [];
+    listDropValue.add(new DropdownMenuItem(
+      child: new Text('None'),
+      value: "None",
+    ));
+  }
+
+  void itemValue() {
+    if (selectedType == "Check") {
+      return loadNoneValue();
+    } else {
+      return loadDataValue();
+    }
+  }
+
   void dispose() {
     ctrlName.dispose();
     ctrlType.dispose();
@@ -69,7 +85,7 @@ class _NewHabitState extends State<NewHabit> {
   @override
   Widget build(BuildContext context) {
     loadDataType();
-    loadDataValue();
+    // loadDataValue();
     return Scaffold(
       appBar: AppBar(
         title: Text("New Habit", style: TextStyle(color: Colors.white)),
@@ -117,6 +133,10 @@ class _NewHabitState extends State<NewHabit> {
                         onChanged: (value) {
                           selectedType = value;
                           setState(() {});
+                          if (selectedValue != null) {
+                            selectedValue = "None";
+                          }
+                          itemValue();
                         },
                       ),
                       SizedBox(

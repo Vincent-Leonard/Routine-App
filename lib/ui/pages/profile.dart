@@ -30,19 +30,6 @@ class _ProfileState extends State<Profile> {
                     setState(() {
                       isLoading = true;
                     });
-                    await AuthServices.signOut().then((value) {
-                      if (value == true) {
-                        setState(() {
-                          isLoading = false;
-                        });
-                        Navigator.pushReplacementNamed(
-                            context, Login.routeName);
-                      } else {
-                        setState(() {
-                          isLoading = false;
-                        });
-                      }
-                    });
                   },
                   icon: Icon(Icons.edit),
                   label: Text("Edit Data"),
