@@ -1,6 +1,6 @@
 part of 'models.dart';
 
-class Habits extends Equatable {
+class Habits {
   final String habitId;
   final String habitName;
   final String habitType;
@@ -21,7 +21,6 @@ class Habits extends Equatable {
     this.updatedAt,
   );
 
-  @override
   List<Object> get props => [
         habitId,
         habitName,

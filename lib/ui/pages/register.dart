@@ -180,7 +180,7 @@ class _RegisterState extends State<Register> {
                           icon: Icon(Icons.save),
                           label: Text("Register"),
                           style: ElevatedButton.styleFrom(
-                              primary: Colors.green[200], elevation: 0),
+                              primary: Colors.deepPurple[600], elevation: 0),
                         ),
                         SizedBox(
                           height: 24,
@@ -192,7 +192,8 @@ class _RegisterState extends State<Register> {
                           },
                           child: Text(
                             "Already Register? Login",
-                            style: TextStyle(color: Colors.green, fontSize: 16),
+                            style: TextStyle(
+                                color: Colors.deepPurple, fontSize: 16),
                           ),
                         )
                       ],

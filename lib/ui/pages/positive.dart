@@ -10,10 +10,6 @@ class _PositiveState extends State<Positive> {
   static DocumentReference habitDocument;
   CollectionReference habitCollection =
       FirebaseFirestore.instance.collection("users");
-  // CollectionReference defaultCollection = FirebaseFirestore.instance
-  //     .collection("habits")
-  //     .doc(habitDocument.id)
-  //     .collection("users");
   CollectionReference defaulthabitCollection;
 
   Widget buildBody() {
@@ -59,14 +55,13 @@ class _PositiveState extends State<Positive> {
     return Scaffold(
         appBar: AppBar(
           title: Text("Positive Habit", style: TextStyle(color: Colors.white)),
-          centerTitle: true,
+          centerTitle: false,
         ),
         body: Container(
           width: double.infinity,
           height: double.infinity,
           child: Stack(
             children: [
-              // buildBody2(),
               buildBody(),
             ],
           ),
@@ -76,7 +71,7 @@ class _PositiveState extends State<Positive> {
             Icons.add,
             color: Colors.white,
           ),
-          backgroundColor: Colors.green[400],
+          backgroundColor: Colors.deepPurple[800],
           onPressed: () async {
             Navigator.pushReplacementNamed(context, AddHabit.routeName);
           },

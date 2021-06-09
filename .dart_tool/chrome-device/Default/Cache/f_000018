@@ -1,16 +1,34 @@
-define(['dart_sdk', 'packages/flutter/src/services/mouse_cursor.dart', 'packages/flutter/src/painting/borders.dart'], (function load__packages__flutter__src__material__material_state_dart(dart_sdk, packages__flutter__src__services__mouse_cursor$46dart, packages__flutter__src__painting__borders$46dart) {
+define(['dart_sdk', 'packages/image_picker_platform_interface/src/types/camera_device.dart', 'packages/image_picker_platform_interface/src/types/picked_file/html.dart', 'packages/image_picker_platform_interface/src/types/picked_file/lost_data.dart', 'packages/image_picker_platform_interface/src/types/retrieve_type.dart', 'packages/flutter/src/services/system_channels.dart', 'packages/plugin_platform_interface/plugin_platform_interface.dart', 'packages/image_picker_platform_interface/src/types/image_source.dart'], (function load__packages__image_picker_platform_interface__src__method_channel__method_channel_image_picker_dart(dart_sdk, packages__image_picker_platform_interface__src__types__camera_device$46dart, packages__image_picker_platform_interface__src__types__picked_file__html$46dart, packages__image_picker_platform_interface__src__types__picked_file__lost_data$46dart, packages__image_picker_platform_interface__src__types__retrieve_type$46dart, packages__flutter__src__services__system_channels$46dart, packages__plugin_platform_interface__plugin_platform_interface$46dart, packages__image_picker_platform_interface__src__types__image_source$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const ui = dart_sdk.ui;
-  const collection = dart_sdk.collection;
+  const async = dart_sdk.async;
+  const _interceptors = dart_sdk._interceptors;
+  const _js_helper = dart_sdk._js_helper;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const mouse_cursor = packages__flutter__src__services__mouse_cursor$46dart.src__services__mouse_cursor;
-  const borders = packages__flutter__src__painting__borders$46dart.src__painting__borders;
-  var material_state = Object.create(dart.library);
-  dart._checkModuleNullSafetyMode(true);
+  const camera_device = packages__image_picker_platform_interface__src__types__camera_device$46dart.src__types__camera_device;
+  const html = packages__image_picker_platform_interface__src__types__picked_file__html$46dart.src__types__picked_file__html;
+  const lost_data = packages__image_picker_platform_interface__src__types__picked_file__lost_data$46dart.src__types__picked_file__lost_data;
+  const retrieve_type = packages__image_picker_platform_interface__src__types__retrieve_type$46dart.src__types__retrieve_type;
+  const message_codec = packages__flutter__src__services__system_channels$46dart.src__services__message_codec;
+  const platform_channel = packages__flutter__src__services__system_channels$46dart.src__services__platform_channel;
+  const plugin_platform_interface = packages__plugin_platform_interface__plugin_platform_interface$46dart.plugin_platform_interface;
+  const image_source = packages__image_picker_platform_interface__src__types__image_source$46dart.src__types__image_source;
+  var method_channel_image_picker = Object.create(dart.library);
+  var image_picker_platform = Object.create(dart.library);
+  var image_picker_platform_interface = Object.create(dart.library);
+  var $add = dartx.add;
+  var $containsKey = dartx.containsKey;
+  var $_get = dartx._get;
+  dart._checkModuleNullSafetyMode(false);
   var T = {
-    LinkedHashSetOfMaterialState: () => (T.LinkedHashSetOfMaterialState = dart.constFn(collection.LinkedHashSet$(material_state.MaterialState)))()
+    PickedFileN: () => (T.PickedFileN = dart.constFn(dart.nullable(html.PickedFile)))(),
+    JSArrayOfPickedFile: () => (T.JSArrayOfPickedFile = dart.constFn(_interceptors.JSArray$(html.PickedFile)))(),
+    ListOfPickedFile: () => (T.ListOfPickedFile = dart.constFn(core.List$(html.PickedFile)))(),
+    ListNOfPickedFile: () => (T.ListNOfPickedFile = dart.constFn(dart.nullable(T.ListOfPickedFile())))(),
+    ListN: () => (T.ListN = dart.constFn(dart.nullable(core.List)))(),
+    IdentityMapOfString$dynamic: () => (T.IdentityMapOfString$dynamic = dart.constFn(_js_helper.IdentityMap$(core.String, dart.dynamic)))(),
+    StringN: () => (T.StringN = dart.constFn(dart.nullable(core.String)))()
   };
   const CT = Object.create({
     _: () => (C, CT)
@@ -18,404 +36,226 @@ define(['dart_sdk', 'packages/flutter/src/services/mouse_cursor.dart', 'packages
   dart.defineLazy(CT, {
     get C0() {
       return C[0] = dart.const({
-        __proto__: material_state.MaterialState.prototype,
-        [_name$]: "MaterialState.hovered",
+        __proto__: camera_device.CameraDevice.prototype,
+        [_name]: "CameraDevice.rear",
         index: 0
       });
-    },
-    get C1() {
-      return C[1] = dart.const({
-        __proto__: material_state.MaterialState.prototype,
-        [_name$]: "MaterialState.focused",
-        index: 1
-      });
-    },
-    get C2() {
-      return C[2] = dart.const({
-        __proto__: material_state.MaterialState.prototype,
-        [_name$]: "MaterialState.pressed",
-        index: 2
-      });
-    },
-    get C3() {
-      return C[3] = dart.const({
-        __proto__: material_state.MaterialState.prototype,
-        [_name$]: "MaterialState.dragged",
-        index: 3
-      });
-    },
-    get C4() {
-      return C[4] = dart.const({
-        __proto__: material_state.MaterialState.prototype,
-        [_name$]: "MaterialState.selected",
-        index: 4
-      });
-    },
-    get C5() {
-      return C[5] = dart.const({
-        __proto__: material_state.MaterialState.prototype,
-        [_name$]: "MaterialState.disabled",
-        index: 5
-      });
-    },
-    get C6() {
-      return C[6] = dart.const({
-        __proto__: material_state.MaterialState.prototype,
-        [_name$]: "MaterialState.error",
-        index: 6
-      });
-    },
-    get C7() {
-      return C[7] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4, C[5] || CT.C5, C[6] || CT.C6], material_state.MaterialState);
-    },
-    get C8() {
-      return C[8] = dart.constSet(material_state.MaterialState, []);
-    },
-    get C10() {
-      return C[10] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [SystemMouseCursor_kind]: "basic"
-      });
-    },
-    get C11() {
-      return C[11] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [SystemMouseCursor_kind]: "click"
-      });
-    },
-    get C9() {
-      return C[9] = dart.const({
-        __proto__: material_state._EnabledAndDisabledMouseCursor.prototype,
-        [_EnabledAndDisabledMouseCursor_name]: "clickable",
-        [_EnabledAndDisabledMouseCursor_disabledCursor]: C[10] || CT.C10,
-        [_EnabledAndDisabledMouseCursor_enabledCursor]: C[11] || CT.C11
-      });
-    },
-    get C13() {
-      return C[13] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [SystemMouseCursor_kind]: "text"
-      });
-    },
-    get C12() {
-      return C[12] = dart.const({
-        __proto__: material_state._EnabledAndDisabledMouseCursor.prototype,
-        [_EnabledAndDisabledMouseCursor_name]: "textable",
-        [_EnabledAndDisabledMouseCursor_disabledCursor]: C[10] || CT.C10,
-        [_EnabledAndDisabledMouseCursor_enabledCursor]: C[13] || CT.C13
-      });
     }
   }, false);
-  var C = Array(14).fill(void 0);
-  var I = ["package:flutter/src/material/material_state.dart"];
-  var _name$ = dart.privateName(material_state, "_name");
-  material_state.MaterialState = class MaterialState extends core.Object {
-    toString() {
-      return this[_name$];
+  var C = [void 0];
+  var I = [
+    "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/image_picker_platform_interface-2.1.0/lib/src/method_channel/method_channel_image_picker.dart",
+    "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/image_picker_platform_interface-2.1.0/lib/src/platform_interface/image_picker_platform.dart",
+    "package:image_picker_platform_interface/src/platform_interface/image_picker_platform.dart",
+    "package:image_picker_platform_interface/src/method_channel/method_channel_image_picker.dart"
+  ];
+  var _name = dart.privateName(camera_device, "_name");
+  var _pickImagePath = dart.privateName(method_channel_image_picker, "_pickImagePath");
+  var _pickMultiImagePath = dart.privateName(method_channel_image_picker, "_pickMultiImagePath");
+  var _pickVideoPath = dart.privateName(method_channel_image_picker, "_pickVideoPath");
+  image_picker_platform.ImagePickerPlatform = class ImagePickerPlatform extends plugin_platform_interface.PlatformInterface {
+    static get instance() {
+      return image_picker_platform.ImagePickerPlatform._instance;
+    }
+    static set instance(instance) {
+      if (instance == null) dart.nullFailed(I[1], 36, 43, "instance");
+      plugin_platform_interface.PlatformInterface.verifyToken(instance, image_picker_platform.ImagePickerPlatform._token);
+      image_picker_platform.ImagePickerPlatform._instance = instance;
+    }
+    pickImage(opts) {
+      let source = opts && 'source' in opts ? opts.source : null;
+      if (source == null) dart.nullFailed(I[1], 72, 26, "source");
+      let maxWidth = opts && 'maxWidth' in opts ? opts.maxWidth : null;
+      let maxHeight = opts && 'maxHeight' in opts ? opts.maxHeight : null;
+      let imageQuality = opts && 'imageQuality' in opts ? opts.imageQuality : null;
+      let preferredCameraDevice = opts && 'preferredCameraDevice' in opts ? opts.preferredCameraDevice : C[0] || CT.C0;
+      if (preferredCameraDevice == null) dart.nullFailed(I[1], 76, 18, "preferredCameraDevice");
+      dart.throw(new core.UnimplementedError.new("pickImage() has not been implemented."));
+    }
+    pickMultiImage(opts) {
+      let maxWidth = opts && 'maxWidth' in opts ? opts.maxWidth : null;
+      let maxHeight = opts && 'maxHeight' in opts ? opts.maxHeight : null;
+      let imageQuality = opts && 'imageQuality' in opts ? opts.imageQuality : null;
+      dart.throw(new core.UnimplementedError.new("pickMultiImage() has not been implemented."));
+    }
+    pickVideo(opts) {
+      let source = opts && 'source' in opts ? opts.source : null;
+      if (source == null) dart.nullFailed(I[1], 124, 26, "source");
+      let preferredCameraDevice = opts && 'preferredCameraDevice' in opts ? opts.preferredCameraDevice : C[0] || CT.C0;
+      if (preferredCameraDevice == null) dart.nullFailed(I[1], 125, 18, "preferredCameraDevice");
+      let maxDuration = opts && 'maxDuration' in opts ? opts.maxDuration : null;
+      dart.throw(new core.UnimplementedError.new("pickVideo() has not been implemented."));
+    }
+    retrieveLostData() {
+      dart.throw(new core.UnimplementedError.new("retrieveLostData() has not been implemented."));
     }
   };
-  (material_state.MaterialState.new = function(index, _name) {
-    this.index = index;
-    this[_name$] = _name;
+  (image_picker_platform.ImagePickerPlatform.new = function() {
+    image_picker_platform.ImagePickerPlatform.__proto__.new.call(this, {token: image_picker_platform.ImagePickerPlatform._token});
     ;
-  }).prototype = material_state.MaterialState.prototype;
-  dart.addTypeTests(material_state.MaterialState);
-  dart.addTypeCaches(material_state.MaterialState);
-  dart.setLibraryUri(material_state.MaterialState, I[0]);
-  dart.setFieldSignature(material_state.MaterialState, () => ({
-    __proto__: dart.getFields(material_state.MaterialState.__proto__),
-    index: dart.finalFieldType(core.int),
-    [_name$]: dart.finalFieldType(core.String)
+  }).prototype = image_picker_platform.ImagePickerPlatform.prototype;
+  dart.addTypeTests(image_picker_platform.ImagePickerPlatform);
+  dart.addTypeCaches(image_picker_platform.ImagePickerPlatform);
+  dart.setMethodSignature(image_picker_platform.ImagePickerPlatform, () => ({
+    __proto__: dart.getMethods(image_picker_platform.ImagePickerPlatform.__proto__),
+    pickImage: dart.fnType(async.Future$(dart.nullable(html.PickedFile)), [], {imageQuality: dart.nullable(core.int), maxHeight: dart.nullable(core.double), maxWidth: dart.nullable(core.double), preferredCameraDevice: camera_device.CameraDevice}, {source: image_source.ImageSource}),
+    pickMultiImage: dart.fnType(async.Future$(dart.nullable(core.List$(html.PickedFile))), [], {imageQuality: dart.nullable(core.int), maxHeight: dart.nullable(core.double), maxWidth: dart.nullable(core.double)}, {}),
+    pickVideo: dart.fnType(async.Future$(dart.nullable(html.PickedFile)), [], {maxDuration: dart.nullable(core.Duration), preferredCameraDevice: camera_device.CameraDevice}, {source: image_source.ImageSource}),
+    retrieveLostData: dart.fnType(async.Future$(lost_data.LostData), [])
   }));
-  dart.defineExtensionMethods(material_state.MaterialState, ['toString']);
-  material_state.MaterialState.hovered = C[0] || CT.C0;
-  material_state.MaterialState.focused = C[1] || CT.C1;
-  material_state.MaterialState.pressed = C[2] || CT.C2;
-  material_state.MaterialState.dragged = C[3] || CT.C3;
-  material_state.MaterialState.selected = C[4] || CT.C4;
-  material_state.MaterialState.disabled = C[5] || CT.C5;
-  material_state.MaterialState.error = C[6] || CT.C6;
-  material_state.MaterialState.values = C[7] || CT.C7;
-  material_state.MaterialStateColor = class MaterialStateColor extends ui.Color {
-    static resolveWith(callback) {
-      return new material_state._MaterialStateColor.new(callback);
-    }
-  };
-  (material_state.MaterialStateColor.new = function(defaultValue) {
-    material_state.MaterialStateColor.__proto__.new.call(this, defaultValue);
-    ;
-  }).prototype = material_state.MaterialStateColor.prototype;
-  dart.addTypeTests(material_state.MaterialStateColor);
-  dart.addTypeCaches(material_state.MaterialStateColor);
-  material_state.MaterialStateColor[dart.implements] = () => [material_state.MaterialStateProperty$(ui.Color)];
-  dart.setLibraryUri(material_state.MaterialStateColor, I[0]);
-  var _resolve$ = dart.privateName(material_state, "_resolve");
-  material_state._MaterialStateColor = class _MaterialStateColor extends material_state.MaterialStateColor {
-    resolve(states) {
-      let t0;
-      t0 = states;
-      return this[_resolve$](t0);
-    }
-  };
-  (material_state._MaterialStateColor.new = function(_resolve) {
-    this[_resolve$] = _resolve;
-    material_state._MaterialStateColor.__proto__.new.call(this, _resolve(material_state._MaterialStateColor._defaultStates).value);
-    ;
-  }).prototype = material_state._MaterialStateColor.prototype;
-  dart.addTypeTests(material_state._MaterialStateColor);
-  dart.addTypeCaches(material_state._MaterialStateColor);
-  dart.setMethodSignature(material_state._MaterialStateColor, () => ({
-    __proto__: dart.getMethods(material_state._MaterialStateColor.__proto__),
-    resolve: dart.fnType(ui.Color, [core.Set$(material_state.MaterialState)])
-  }));
-  dart.setLibraryUri(material_state._MaterialStateColor, I[0]);
-  dart.setFieldSignature(material_state._MaterialStateColor, () => ({
-    __proto__: dart.getFields(material_state._MaterialStateColor.__proto__),
-    [_resolve$]: dart.finalFieldType(dart.fnType(ui.Color, [core.Set$(material_state.MaterialState)]))
-  }));
-  dart.defineLazy(material_state._MaterialStateColor, {
-    /*material_state._MaterialStateColor._defaultStates*/get _defaultStates() {
-      return C[8] || CT.C8;
-    }
-  }, false);
-  var _EnabledAndDisabledMouseCursor_name = dart.privateName(material_state, "_EnabledAndDisabledMouseCursor.name");
-  var SystemMouseCursor_kind = dart.privateName(mouse_cursor, "SystemMouseCursor.kind");
-  var _EnabledAndDisabledMouseCursor_disabledCursor = dart.privateName(material_state, "_EnabledAndDisabledMouseCursor.disabledCursor");
-  var _EnabledAndDisabledMouseCursor_enabledCursor = dart.privateName(material_state, "_EnabledAndDisabledMouseCursor.enabledCursor");
-  material_state.MaterialStateMouseCursor = class MaterialStateMouseCursor extends mouse_cursor.MouseCursor {
-    createSession(device) {
-      return this.resolve(T.LinkedHashSetOfMaterialState().new()).createSession(device);
-    }
-  };
-  (material_state.MaterialStateMouseCursor.new = function() {
-    material_state.MaterialStateMouseCursor.__proto__.new.call(this);
-    ;
-  }).prototype = material_state.MaterialStateMouseCursor.prototype;
-  dart.addTypeTests(material_state.MaterialStateMouseCursor);
-  dart.addTypeCaches(material_state.MaterialStateMouseCursor);
-  material_state.MaterialStateMouseCursor[dart.implements] = () => [material_state.MaterialStateProperty$(mouse_cursor.MouseCursor)];
-  dart.setMethodSignature(material_state.MaterialStateMouseCursor, () => ({
-    __proto__: dart.getMethods(material_state.MaterialStateMouseCursor.__proto__),
-    createSession: dart.fnType(mouse_cursor.MouseCursorSession, [core.int])
-  }));
-  dart.setLibraryUri(material_state.MaterialStateMouseCursor, I[0]);
-  dart.defineLazy(material_state.MaterialStateMouseCursor, {
-    /*material_state.MaterialStateMouseCursor.clickable*/get clickable() {
-      return C[9] || CT.C9;
+  dart.setLibraryUri(image_picker_platform.ImagePickerPlatform, I[2]);
+  dart.defineLazy(image_picker_platform.ImagePickerPlatform, {
+    /*image_picker_platform.ImagePickerPlatform._token*/get _token() {
+      return new core.Object.new();
     },
-    /*material_state.MaterialStateMouseCursor.textable*/get textable() {
-      return C[12] || CT.C12;
-    }
+    /*image_picker_platform.ImagePickerPlatform._instance*/get _instance() {
+      return new method_channel_image_picker.MethodChannelImagePicker.new();
+    },
+    set _instance(_) {}
   }, false);
-  const enabledCursor$ = _EnabledAndDisabledMouseCursor_enabledCursor;
-  const disabledCursor$ = _EnabledAndDisabledMouseCursor_disabledCursor;
-  const name$ = _EnabledAndDisabledMouseCursor_name;
-  material_state._EnabledAndDisabledMouseCursor = class _EnabledAndDisabledMouseCursor extends material_state.MaterialStateMouseCursor {
-    get enabledCursor() {
-      return this[enabledCursor$];
+  method_channel_image_picker.MethodChannelImagePicker = class MethodChannelImagePicker extends image_picker_platform.ImagePickerPlatform {
+    get channel() {
+      return method_channel_image_picker._channel;
     }
-    set enabledCursor(value) {
-      super.enabledCursor = value;
+    pickImage(opts) {
+      let source = opts && 'source' in opts ? opts.source : null;
+      if (source == null) dart.nullFailed(I[0], 23, 26, "source");
+      let maxWidth = opts && 'maxWidth' in opts ? opts.maxWidth : null;
+      let maxHeight = opts && 'maxHeight' in opts ? opts.maxHeight : null;
+      let imageQuality = opts && 'imageQuality' in opts ? opts.imageQuality : null;
+      let preferredCameraDevice = opts && 'preferredCameraDevice' in opts ? opts.preferredCameraDevice : C[0] || CT.C0;
+      if (preferredCameraDevice == null) dart.nullFailed(I[0], 27, 18, "preferredCameraDevice");
+      return async.async(T.PickedFileN(), (function* pickImage() {
+        let path = (yield this[_pickImagePath]({source: source, maxWidth: maxWidth, maxHeight: maxHeight, imageQuality: imageQuality, preferredCameraDevice: preferredCameraDevice}));
+        return path != null ? new html.PickedFile.new(path) : null;
+      }).bind(this));
     }
-    get disabledCursor() {
-      return this[disabledCursor$];
-    }
-    set disabledCursor(value) {
-      super.disabledCursor = value;
-    }
-    get name() {
-      return this[name$];
-    }
-    set name(value) {
-      super.name = value;
-    }
-    resolve(states) {
-      if (states.contains(material_state.MaterialState.disabled)) {
-        return this.disabledCursor;
-      }
-      return this.enabledCursor;
-    }
-    get debugDescription() {
-      return "MaterialStateMouseCursor(" + this.name + ")";
-    }
-  };
-  (material_state._EnabledAndDisabledMouseCursor.new = function(opts) {
-    let enabledCursor = opts && 'enabledCursor' in opts ? opts.enabledCursor : null;
-    let disabledCursor = opts && 'disabledCursor' in opts ? opts.disabledCursor : null;
-    let name = opts && 'name' in opts ? opts.name : null;
-    this[enabledCursor$] = enabledCursor;
-    this[disabledCursor$] = disabledCursor;
-    this[name$] = name;
-    material_state._EnabledAndDisabledMouseCursor.__proto__.new.call(this);
-    ;
-  }).prototype = material_state._EnabledAndDisabledMouseCursor.prototype;
-  dart.addTypeTests(material_state._EnabledAndDisabledMouseCursor);
-  dart.addTypeCaches(material_state._EnabledAndDisabledMouseCursor);
-  dart.setMethodSignature(material_state._EnabledAndDisabledMouseCursor, () => ({
-    __proto__: dart.getMethods(material_state._EnabledAndDisabledMouseCursor.__proto__),
-    resolve: dart.fnType(mouse_cursor.MouseCursor, [core.Set$(material_state.MaterialState)])
-  }));
-  dart.setGetterSignature(material_state._EnabledAndDisabledMouseCursor, () => ({
-    __proto__: dart.getGetters(material_state._EnabledAndDisabledMouseCursor.__proto__),
-    debugDescription: core.String
-  }));
-  dart.setLibraryUri(material_state._EnabledAndDisabledMouseCursor, I[0]);
-  dart.setFieldSignature(material_state._EnabledAndDisabledMouseCursor, () => ({
-    __proto__: dart.getFields(material_state._EnabledAndDisabledMouseCursor.__proto__),
-    enabledCursor: dart.finalFieldType(mouse_cursor.MouseCursor),
-    disabledCursor: dart.finalFieldType(mouse_cursor.MouseCursor),
-    name: dart.finalFieldType(core.String)
-  }));
-  material_state.MaterialStateBorderSide = class MaterialStateBorderSide extends borders.BorderSide {
-    static resolveWith(callback) {
-      return new material_state._MaterialStateBorderSide.new(callback);
-    }
-  };
-  (material_state.MaterialStateBorderSide.new = function() {
-    material_state.MaterialStateBorderSide.__proto__.new.call(this);
-    ;
-  }).prototype = material_state.MaterialStateBorderSide.prototype;
-  dart.addTypeTests(material_state.MaterialStateBorderSide);
-  dart.addTypeCaches(material_state.MaterialStateBorderSide);
-  material_state.MaterialStateBorderSide[dart.implements] = () => [material_state.MaterialStateProperty$(dart.nullable(borders.BorderSide))];
-  dart.setLibraryUri(material_state.MaterialStateBorderSide, I[0]);
-  var _resolve$0 = dart.privateName(material_state, "_MaterialStateBorderSide._resolve");
-  material_state._MaterialStateBorderSide = class _MaterialStateBorderSide extends material_state.MaterialStateBorderSide {
-    get [_resolve$]() {
-      return this[_resolve$0];
-    }
-    set [_resolve$](value) {
-      super[_resolve$] = value;
-    }
-    resolve(states) {
-      let t0;
-      t0 = states;
-      return this[_resolve$](t0);
-    }
-  };
-  (material_state._MaterialStateBorderSide.new = function(_resolve) {
-    this[_resolve$0] = _resolve;
-    material_state._MaterialStateBorderSide.__proto__.new.call(this);
-    ;
-  }).prototype = material_state._MaterialStateBorderSide.prototype;
-  dart.addTypeTests(material_state._MaterialStateBorderSide);
-  dart.addTypeCaches(material_state._MaterialStateBorderSide);
-  dart.setMethodSignature(material_state._MaterialStateBorderSide, () => ({
-    __proto__: dart.getMethods(material_state._MaterialStateBorderSide.__proto__),
-    resolve: dart.fnType(dart.nullable(borders.BorderSide), [core.Set$(material_state.MaterialState)])
-  }));
-  dart.setLibraryUri(material_state._MaterialStateBorderSide, I[0]);
-  dart.setFieldSignature(material_state._MaterialStateBorderSide, () => ({
-    __proto__: dart.getFields(material_state._MaterialStateBorderSide.__proto__),
-    [_resolve$]: dart.finalFieldType(dart.fnType(dart.nullable(borders.BorderSide), [core.Set$(material_state.MaterialState)]))
-  }));
-  material_state.MaterialStateOutlinedBorder = class MaterialStateOutlinedBorder extends borders.OutlinedBorder {};
-  (material_state.MaterialStateOutlinedBorder.new = function() {
-    material_state.MaterialStateOutlinedBorder.__proto__.new.call(this);
-    ;
-  }).prototype = material_state.MaterialStateOutlinedBorder.prototype;
-  dart.addTypeTests(material_state.MaterialStateOutlinedBorder);
-  dart.addTypeCaches(material_state.MaterialStateOutlinedBorder);
-  material_state.MaterialStateOutlinedBorder[dart.implements] = () => [material_state.MaterialStateProperty$(dart.nullable(borders.OutlinedBorder))];
-  dart.setLibraryUri(material_state.MaterialStateOutlinedBorder, I[0]);
-  const _is_MaterialStateProperty_default = Symbol('_is_MaterialStateProperty_default');
-  material_state.MaterialStateProperty$ = dart.generic(T => {
-    class MaterialStateProperty extends core.Object {
-      static resolveAs(T, value, states) {
-        if (material_state.MaterialStateProperty$(T).is(value)) {
-          let property = value;
-          return property.resolve(states);
+    pickMultiImage(opts) {
+      let maxWidth = opts && 'maxWidth' in opts ? opts.maxWidth : null;
+      let maxHeight = opts && 'maxHeight' in opts ? opts.maxHeight : null;
+      let imageQuality = opts && 'imageQuality' in opts ? opts.imageQuality : null;
+      return async.async(T.ListNOfPickedFile(), (function* pickMultiImage() {
+        let paths = (yield this[_pickMultiImagePath]({maxWidth: maxWidth, maxHeight: maxHeight, imageQuality: imageQuality}));
+        if (paths == null) return null;
+        let files = T.JSArrayOfPickedFile().of([]);
+        for (let path of paths) {
+          files[$add](new html.PickedFile.new(core.String.as(path)));
         }
-        return value;
-      }
-      static resolveWith(T, callback) {
-        return new (material_state._MaterialStatePropertyWith$(T)).new(callback);
-      }
-      static all(T, value) {
-        return new (material_state._MaterialStatePropertyAll$(T)).new(value);
-      }
+        return files;
+      }).bind(this));
     }
-    (MaterialStateProperty.new = function() {
-      ;
-    }).prototype = MaterialStateProperty.prototype;
-    dart.addTypeTests(MaterialStateProperty);
-    MaterialStateProperty.prototype[_is_MaterialStateProperty_default] = true;
-    dart.addTypeCaches(MaterialStateProperty);
-    dart.setLibraryUri(MaterialStateProperty, I[0]);
-    return MaterialStateProperty;
-  });
-  material_state.MaterialStateProperty = material_state.MaterialStateProperty$();
-  dart.addTypeTests(material_state.MaterialStateProperty, _is_MaterialStateProperty_default);
-  const _is__MaterialStatePropertyWith_default = Symbol('_is__MaterialStatePropertyWith_default');
-  material_state._MaterialStatePropertyWith$ = dart.generic(T => {
-    class _MaterialStatePropertyWith extends core.Object {
-      resolve(states) {
-        let t0;
-        t0 = states;
-        return this[_resolve$](t0);
+    [_pickMultiImagePath](opts) {
+      let maxWidth = opts && 'maxWidth' in opts ? opts.maxWidth : null;
+      let maxHeight = opts && 'maxHeight' in opts ? opts.maxHeight : null;
+      let imageQuality = opts && 'imageQuality' in opts ? opts.imageQuality : null;
+      if (imageQuality != null && (dart.notNull(imageQuality) < 0 || dart.notNull(imageQuality) > 100)) {
+        dart.throw(new core.ArgumentError.value(imageQuality, "imageQuality", "must be between 0 and 100"));
       }
+      if (maxWidth != null && dart.notNull(maxWidth) < 0) {
+        dart.throw(new core.ArgumentError.value(maxWidth, "maxWidth", "cannot be negative"));
+      }
+      if (maxHeight != null && dart.notNull(maxHeight) < 0) {
+        dart.throw(new core.ArgumentError.value(maxHeight, "maxHeight", "cannot be negative"));
+      }
+      return method_channel_image_picker._channel.invokeMethod(T.ListN(), "pickMultiImage", new (T.IdentityMapOfString$dynamic()).from(["maxWidth", maxWidth, "maxHeight", maxHeight, "imageQuality", imageQuality]));
     }
-    (_MaterialStatePropertyWith.new = function(_resolve) {
-      this[_resolve$] = _resolve;
-      ;
-    }).prototype = _MaterialStatePropertyWith.prototype;
-    dart.addTypeTests(_MaterialStatePropertyWith);
-    _MaterialStatePropertyWith.prototype[_is__MaterialStatePropertyWith_default] = true;
-    dart.addTypeCaches(_MaterialStatePropertyWith);
-    _MaterialStatePropertyWith[dart.implements] = () => [material_state.MaterialStateProperty$(T)];
-    dart.setMethodSignature(_MaterialStatePropertyWith, () => ({
-      __proto__: dart.getMethods(_MaterialStatePropertyWith.__proto__),
-      resolve: dart.fnType(T, [core.Set$(material_state.MaterialState)])
-    }));
-    dart.setLibraryUri(_MaterialStatePropertyWith, I[0]);
-    dart.setFieldSignature(_MaterialStatePropertyWith, () => ({
-      __proto__: dart.getFields(_MaterialStatePropertyWith.__proto__),
-      [_resolve$]: dart.finalFieldType(dart.fnType(T, [core.Set$(material_state.MaterialState)]))
-    }));
-    return _MaterialStatePropertyWith;
-  });
-  material_state._MaterialStatePropertyWith = material_state._MaterialStatePropertyWith$();
-  dart.addTypeTests(material_state._MaterialStatePropertyWith, _is__MaterialStatePropertyWith_default);
-  const _is__MaterialStatePropertyAll_default = Symbol('_is__MaterialStatePropertyAll_default');
-  material_state._MaterialStatePropertyAll$ = dart.generic(T => {
-    class _MaterialStatePropertyAll extends core.Object {
-      resolve(states) {
-        return this.value;
+    [_pickImagePath](opts) {
+      let source = opts && 'source' in opts ? opts.source : null;
+      if (source == null) dart.nullFailed(I[0], 88, 26, "source");
+      let maxWidth = opts && 'maxWidth' in opts ? opts.maxWidth : null;
+      let maxHeight = opts && 'maxHeight' in opts ? opts.maxHeight : null;
+      let imageQuality = opts && 'imageQuality' in opts ? opts.imageQuality : null;
+      let preferredCameraDevice = opts && 'preferredCameraDevice' in opts ? opts.preferredCameraDevice : C[0] || CT.C0;
+      if (preferredCameraDevice == null) dart.nullFailed(I[0], 92, 18, "preferredCameraDevice");
+      if (imageQuality != null && (dart.notNull(imageQuality) < 0 || dart.notNull(imageQuality) > 100)) {
+        dart.throw(new core.ArgumentError.value(imageQuality, "imageQuality", "must be between 0 and 100"));
       }
-      toString() {
-        return "MaterialStateProperty.all(" + dart.str(this.value) + ")";
+      if (maxWidth != null && dart.notNull(maxWidth) < 0) {
+        dart.throw(new core.ArgumentError.value(maxWidth, "maxWidth", "cannot be negative"));
       }
+      if (maxHeight != null && dart.notNull(maxHeight) < 0) {
+        dart.throw(new core.ArgumentError.value(maxHeight, "maxHeight", "cannot be negative"));
+      }
+      return method_channel_image_picker._channel.invokeMethod(core.String, "pickImage", new (T.IdentityMapOfString$dynamic()).from(["source", source.index, "maxWidth", maxWidth, "maxHeight", maxHeight, "imageQuality", imageQuality, "cameraDevice", preferredCameraDevice.index]));
     }
-    (_MaterialStatePropertyAll.new = function(value) {
-      this.value = value;
-      ;
-    }).prototype = _MaterialStatePropertyAll.prototype;
-    dart.addTypeTests(_MaterialStatePropertyAll);
-    _MaterialStatePropertyAll.prototype[_is__MaterialStatePropertyAll_default] = true;
-    dart.addTypeCaches(_MaterialStatePropertyAll);
-    _MaterialStatePropertyAll[dart.implements] = () => [material_state.MaterialStateProperty$(T)];
-    dart.setMethodSignature(_MaterialStatePropertyAll, () => ({
-      __proto__: dart.getMethods(_MaterialStatePropertyAll.__proto__),
-      resolve: dart.fnType(T, [core.Set$(material_state.MaterialState)])
-    }));
-    dart.setLibraryUri(_MaterialStatePropertyAll, I[0]);
-    dart.setFieldSignature(_MaterialStatePropertyAll, () => ({
-      __proto__: dart.getFields(_MaterialStatePropertyAll.__proto__),
-      value: dart.finalFieldType(T)
-    }));
-    dart.defineExtensionMethods(_MaterialStatePropertyAll, ['toString']);
-    return _MaterialStatePropertyAll;
-  });
-  material_state._MaterialStatePropertyAll = material_state._MaterialStatePropertyAll$();
-  dart.addTypeTests(material_state._MaterialStatePropertyAll, _is__MaterialStatePropertyAll_default);
-  dart.trackLibraries("packages/flutter/src/material/material_state.dart", {
-    "package:flutter/src/material/material_state.dart": material_state
+    pickVideo(opts) {
+      let source = opts && 'source' in opts ? opts.source : null;
+      if (source == null) dart.nullFailed(I[0], 121, 26, "source");
+      let preferredCameraDevice = opts && 'preferredCameraDevice' in opts ? opts.preferredCameraDevice : C[0] || CT.C0;
+      if (preferredCameraDevice == null) dart.nullFailed(I[0], 122, 18, "preferredCameraDevice");
+      let maxDuration = opts && 'maxDuration' in opts ? opts.maxDuration : null;
+      return async.async(T.PickedFileN(), (function* pickVideo() {
+        let path = (yield this[_pickVideoPath]({source: source, maxDuration: maxDuration, preferredCameraDevice: preferredCameraDevice}));
+        return path != null ? new html.PickedFile.new(path) : null;
+      }).bind(this));
+    }
+    [_pickVideoPath](opts) {
+      let t0;
+      let source = opts && 'source' in opts ? opts.source : null;
+      if (source == null) dart.nullFailed(I[0], 134, 26, "source");
+      let preferredCameraDevice = opts && 'preferredCameraDevice' in opts ? opts.preferredCameraDevice : C[0] || CT.C0;
+      if (preferredCameraDevice == null) dart.nullFailed(I[0], 135, 18, "preferredCameraDevice");
+      let maxDuration = opts && 'maxDuration' in opts ? opts.maxDuration : null;
+      return method_channel_image_picker._channel.invokeMethod(core.String, "pickVideo", new (T.IdentityMapOfString$dynamic()).from(["source", source.index, "maxDuration", (t0 = maxDuration, t0 == null ? null : t0.inSeconds), "cameraDevice", preferredCameraDevice.index]));
+    }
+    retrieveLostData() {
+      return async.async(lost_data.LostData, function* retrieveLostData() {
+        let result = (yield method_channel_image_picker._channel.invokeMapMethod(core.String, dart.dynamic, "retrieve"));
+        if (result == null) {
+          return new lost_data.LostData.empty();
+        }
+        if (!(dart.notNull(result[$containsKey]("path")) !== dart.test(result[$containsKey]("errorCode")))) dart.assertFailed(null, I[0], 157, 12, "result.containsKey('path') ^ result.containsKey('errorCode')");
+        let type = T.StringN().as(result[$_get]("type"));
+        if (!(type === "image" || type === "video")) dart.assertFailed(null, I[0], 160, 12, "type == kTypeImage || type == kTypeVideo");
+        let retrieveType = null;
+        if (type === "image") {
+          retrieveType = retrieve_type.RetrieveType.image;
+        } else if (type === "video") {
+          retrieveType = retrieve_type.RetrieveType.video;
+        }
+        let exception = null;
+        if (dart.test(result[$containsKey]("errorCode"))) {
+          exception = new message_codec.PlatformException.new({code: core.String.as(result[$_get]("errorCode")), message: T.StringN().as(result[$_get]("errorMessage"))});
+        }
+        let path = T.StringN().as(result[$_get]("path"));
+        return new lost_data.LostData.new({file: path != null ? new html.PickedFile.new(path) : null, exception: exception, type: retrieveType});
+      });
+    }
+  };
+  (method_channel_image_picker.MethodChannelImagePicker.new = function() {
+    method_channel_image_picker.MethodChannelImagePicker.__proto__.new.call(this);
+    ;
+  }).prototype = method_channel_image_picker.MethodChannelImagePicker.prototype;
+  dart.addTypeTests(method_channel_image_picker.MethodChannelImagePicker);
+  dart.addTypeCaches(method_channel_image_picker.MethodChannelImagePicker);
+  dart.setMethodSignature(method_channel_image_picker.MethodChannelImagePicker, () => ({
+    __proto__: dart.getMethods(method_channel_image_picker.MethodChannelImagePicker.__proto__),
+    [_pickMultiImagePath]: dart.fnType(async.Future$(dart.nullable(core.List)), [], {imageQuality: dart.nullable(core.int), maxHeight: dart.nullable(core.double), maxWidth: dart.nullable(core.double)}, {}),
+    [_pickImagePath]: dart.fnType(async.Future$(dart.nullable(core.String)), [], {imageQuality: dart.nullable(core.int), maxHeight: dart.nullable(core.double), maxWidth: dart.nullable(core.double), preferredCameraDevice: camera_device.CameraDevice}, {source: image_source.ImageSource}),
+    [_pickVideoPath]: dart.fnType(async.Future$(dart.nullable(core.String)), [], {maxDuration: dart.nullable(core.Duration), preferredCameraDevice: camera_device.CameraDevice}, {source: image_source.ImageSource})
+  }));
+  dart.setGetterSignature(method_channel_image_picker.MethodChannelImagePicker, () => ({
+    __proto__: dart.getGetters(method_channel_image_picker.MethodChannelImagePicker.__proto__),
+    channel: platform_channel.MethodChannel
+  }));
+  dart.setLibraryUri(method_channel_image_picker.MethodChannelImagePicker, I[3]);
+  dart.defineLazy(method_channel_image_picker, {
+    /*method_channel_image_picker._channel*/get _channel() {
+      return new platform_channel.MethodChannel.new("plugins.flutter.io/image_picker");
+    }
+  }, false);
+  dart.trackLibraries("packages/image_picker_platform_interface/src/method_channel/method_channel_image_picker.dart", {
+    "package:image_picker_platform_interface/src/method_channel/method_channel_image_picker.dart": method_channel_image_picker,
+    "package:image_picker_platform_interface/src/platform_interface/image_picker_platform.dart": image_picker_platform,
+    "package:image_picker_platform_interface/image_picker_platform_interface.dart": image_picker_platform_interface
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["material_state.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IA6EA;;sDA7CK;;;;EA6CL;;;;;;;;;;;;;;;;;;;uBAoEwE;AAAa,wDAAoB,QAAQ;IAAC;;oDAVnF;AAAgB,+DAAM,YAAY;;EAAC;;;;;;;YAkC/B;;AAAW,WAAS,MAAM;YAAf,AAAQ;IAAQ;;;IARnC;AAAY,gEAAM,AAAQ,AAAiB,QAAjB,CAAC;;EAAsB;;;;;;;;;;;;;MAK1C,iDAAc;;;;;;;;;kBAqET;AACnC,YAAO,AAA2B,cAAJ,sDAAkB,MAAM;IACxD;;;AANM;;EAA0B;;;;;;;;;;MAsBM,iDAAS;;;MAaT,gDAAQ;;;;;;;;IAc5B;;;;;;IACA;;;;;;IACL;;;;;;YAG0B;AACrC,UAAI,AAAO,MAAD,UAAwB;AAChC,cAAO;;AAET,YAAO;IACT;;AAG+B,YAAA,AAAiC,+BAAN,YAAI;IAAE;;;QAlBhD;QACA;QACA;IAFA;IACA;IACA;AAHV;;EAIJ;;;;;;;;;;;;;;;;;;;uBAuG+E;AAC7E,6DAAyB,QAAQ;IAAC;;;AAzChC;;EAAyB;;;;;;;IAsDa;;;;;;YAGL;;AACrC,WAAgB,MAAM;YAAf,AAAQ;IACjB;;;IAPoC;AAA9B;;EAAuC;;;;;;;;;;;;;;AA+DvC;;EAA6B;;;;;;;;0BAkFX,OAA0B;AAChD,YAAU,4CAAN,KAAK;AACwB,yBAAW,KAAK;AAC/C,gBAAO,AAAS,SAAD,SAAS,MAAM;;AAEhC,cAAO,MAAK;MACd;4BAI2E;AAAa,uEAA8B,QAAQ;MAAC;oBAItF;AAAU,sEAA6B,KAAK;MAAC;;;;IACxF;;;;;;;;;;;;cAQ+B;;AAAW,aAAS,MAAM;cAAf,AAAQ;MAAQ;;;MALxB;;IAAS;;;;;;;;;;;;;;;;;;;;;cAcZ;AAAW;MAAK;;AAGxB,cAAA,AAAmC,yCAAP,cAAK;MAAE;;;MARzB;;IAAM","file":"../../../../../../../packages/flutter/src/material/material_state.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["../platform_interface/image_picker_platform.dart","method_channel_image_picker.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../packages/image_picker_platform_interface/src/method_channel/method_channel_image_picker.dart.lib.js"}');
   // Exports:
   return {
-    src__material__material_state: material_state
+    src__method_channel__method_channel_image_picker: method_channel_image_picker,
+    src__platform_interface__image_picker_platform: image_picker_platform,
+    image_picker_platform_interface: image_picker_platform_interface
   };
 }));
 
-//# sourceMappingURL=material_state.dart.lib.js.map
+//# sourceMappingURL=method_channel_image_picker.dart.lib.js.map

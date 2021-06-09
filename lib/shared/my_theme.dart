@@ -3,11 +3,11 @@ part of 'shared.dart';
 class MyTheme {
   static ThemeData lightTheme() {
     return ThemeData(
-      primarySwatch: Colors.lightGreen,
+      primarySwatch: Colors.deepPurple,
       backgroundColor: Color(0xFFf2f2f2),
       scaffoldBackgroundColor: Color(0xFFf2f2f2),
-      primaryColor: Colors.lightGreen[400],
-      accentColor: Colors.lightGreen[400],
+      primaryColor: Colors.deepPurple[800],
+      accentColor: Colors.deepPurple[400],
       visualDensity: VisualDensity.adaptivePlatformDensity,
       brightness: Brightness.light,
       fontFamily: GoogleFonts.lato().fontFamily,

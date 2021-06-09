@@ -23,6 +23,9 @@ class MyApp extends StatelessWidget {
         Register.routeName: (context) => Register(),
         AddHabit.routeName: (context) => AddHabit(),
         NewHabit.routeName: (context) => NewHabit(),
+        AddNegative.routeName: (context) => AddNegative(),
+        NewNegative.routeName: (context) => NewNegative(),
+        EditProfile.routeName: (context) => EditProfile(),
       },
     );
   }

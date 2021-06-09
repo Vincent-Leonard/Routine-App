@@ -126,18 +126,20 @@ class _NewHabitState extends State<NewHabit> {
                       SizedBox(
                         height: 24,
                       ),
-                      new DropdownButton(
-                        value: selectedType,
-                        items: listDropType,
-                        hint: new Text('Select Type'),
-                        onChanged: (value) {
-                          selectedType = value;
-                          setState(() {});
-                          if (selectedValue != null) {
-                            selectedValue = "None";
-                          }
-                          itemValue();
-                        },
+                      Container(
+                        child: DropdownButton(
+                          value: selectedType,
+                          items: listDropType,
+                          hint: new Text('Select Type'),
+                          onChanged: (value) {
+                            selectedType = value;
+                            setState(() {});
+                            if (selectedValue != null) {
+                              selectedValue = "None";
+                            }
+                            itemValue();
+                          },
+                        ),
                       ),
                       SizedBox(
                         height: 24,
@@ -163,8 +165,8 @@ class _NewHabitState extends State<NewHabit> {
                             selectedValue,
                             "0",
                             "0",
-                            "",
-                            "",
+                            ActivityServices.dateNow(),
+                            ActivityServices.dateNow(),
                           );
                           await HabitServices.addHabit(habits).then((value) {
                             if (value == true) {
@@ -185,7 +187,7 @@ class _NewHabitState extends State<NewHabit> {
                         icon: Icon(Icons.save),
                         label: Text("Save Habit"),
                         style: ElevatedButton.styleFrom(
-                            primary: Colors.green[400], elevation: 0),
+                            primary: Colors.deepPurple[600], elevation: 0),
                       ),
                     ],
                   ),

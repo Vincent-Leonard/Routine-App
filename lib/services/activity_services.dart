@@ -3,7 +3,7 @@ part of 'services.dart';
 class ActivityServices {
   static String dateNow() {
     var now = new DateTime.now();
-    var formatter = new DateFormat('yyyy-mm-dd hh:mm:ss');
+    var formatter = new DateFormat('yyyy-MM-dd');
     String hasil = formatter.format(now);
     return hasil;
   }
@@ -26,7 +26,7 @@ class ActivityServices {
       color: Colors.black26,
       child: SpinKitSpinningCircle(
         size: 50,
-        color: Colors.green[200],
+        color: Colors.deepPurple[800],
       ),
     );
   }

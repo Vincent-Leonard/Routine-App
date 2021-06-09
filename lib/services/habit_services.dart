@@ -8,6 +8,8 @@ class HabitServices {
   static CollectionReference userCollection =
       FirebaseFirestore.instance.collection("users");
   static DocumentReference habitDocument;
+  static CollectionReference logCollection =
+      FirebaseFirestore.instance.collection("logs");
 
   //setup storage
   static Reference ref;
@@ -30,7 +32,11 @@ class HabitServices {
     });
 
     if (habitDocument != null) {
-      userCollection.doc(uid).collection("habit").doc(habitDocument.id).update({
+      userCollection
+          .doc(uid)
+          .collection("habits")
+          .doc(habitDocument.id)
+          .update({
         'habitId': habitDocument.id,
       });
       return true;
@@ -41,8 +47,14 @@ class HabitServices {
 
   static Future<bool> deleteHabit(String id) async {
     bool hsl = true;
+    String uid = auth.currentUser.uid;
     await Firebase.initializeApp();
-    await userCollection.doc(id).delete().then((value) {
+    await userCollection
+        .doc(uid)
+        .collection("habits")
+        .doc(id)
+        .delete()
+        .then((value) {
       hsl = true;
     }).catchError((onError) {
       hsl = false;
@@ -60,11 +72,7 @@ class HabitServices {
       String positiveHabit) async {
     await Firebase.initializeApp();
     String dateNow = ActivityServices.dateNow();
-    userCollection = FirebaseFirestore.instance
-        .collection("users")
-        .doc(uid)
-        .collection("habits");
-    await userCollection.doc(uid).set({
+    await userCollection.doc(uid).collection("habits").doc(habitId).set({
       'habitId': habitId,
       'habitName': habitName,
       'habitType': habitType,
@@ -74,7 +82,49 @@ class HabitServices {
       'createdAt': dateNow,
       'updatedAt': dateNow,
     });
-
     return true;
+  }
+
+  static Future<bool> addLog(String habitId, String habitType, String typeValue,
+      String amount, String habitName) async {
+    await Firebase.initializeApp();
+    String uid = auth.currentUser.uid;
+    String dateNow = ActivityServices.dateNow();
+    await userCollection
+        .doc(uid)
+        .collection("habits")
+        .doc(habitId)
+        .collection("date")
+        .doc(dateNow)
+        .set({
+      'habitName': habitName,
+      'habitType': habitType,
+      'typeValue': typeValue,
+      'date': dateNow,
+      'amount': amount,
+      'habitId': habitId,
+      'userId': uid,
+    });
+    return true;
+  }
+
+  static Future<bool> deleteLog(String id) async {
+    bool hsl = true;
+    String uid = auth.currentUser.uid;
+    await Firebase.initializeApp();
+    String dateNow = ActivityServices.dateNow();
+    await userCollection
+        .doc(uid)
+        .collection("habits")
+        .doc(id)
+        .collection("date")
+        .doc(dateNow)
+        .delete()
+        .then((value) {
+      hsl = true;
+    }).catchError((onError) {
+      hsl = false;
+    });
+    return hsl;
   }
 }

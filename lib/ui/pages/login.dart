@@ -124,7 +124,7 @@ class _LoginState extends State<Login> {
                           icon: Icon(Icons.login_rounded),
                           label: Text("Login"),
                           style: ElevatedButton.styleFrom(
-                              primary: Colors.green[200], elevation: 0),
+                              primary: Colors.deepPurple[600], elevation: 0),
                         ),
                         SizedBox(
                           height: 24,
@@ -137,7 +137,7 @@ class _LoginState extends State<Login> {
                           child: Text(
                             "Not Registered yet? Join Now",
                             style: TextStyle(
-                                color: Colors.green[400], fontSize: 16),
+                                color: Colors.deepPurple[800], fontSize: 16),
                           ),
                         )
                       ],

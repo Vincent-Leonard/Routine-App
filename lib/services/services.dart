@@ -10,6 +10,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:routine/models/models.dart';
+import 'package:firebase_helpers/firebase_helpers.dart';
 
 part 'auth_services.dart';
 part 'activity_services.dart';

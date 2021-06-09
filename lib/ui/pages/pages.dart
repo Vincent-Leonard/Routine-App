@@ -1,7 +1,11 @@
 import 'dart:async';
+import 'dart:ui';
 
+import 'package:intl/intl.dart';
 import 'package:routine/models/models.dart';
+import 'package:routine/services/firestore_services.dart';
 import 'package:routine/services/services.dart';
+import 'package:routine/shared/shared.dart';
 import 'package:routine/ui/widgets/widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:email_validator/email_validator.dart';
@@ -11,6 +15,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 part 'login.dart';
 part 'register.dart';
@@ -22,3 +27,6 @@ part 'profile.dart';
 part 'positive/addhabit.dart';
 part 'positive/newhabit.dart';
 part 'splash.dart';
+part 'editprofile.dart';
+part 'addnegative.dart';
+part 'newnegative.dart';

@@ -59,7 +59,7 @@ class _AddHabitState extends State<AddHabit> {
             Icons.arrow_back,
             color: Colors.white,
           ),
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () => Navigator.pop(context),
         ),
       ),
       body: Container(
@@ -72,6 +72,9 @@ class _AddHabitState extends State<AddHabit> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
+                  SizedBox(
+                    height: 40,
+                  ),
                   ElevatedButton.icon(
                     onPressed: () async {
                       Navigator.pushReplacementNamed(
